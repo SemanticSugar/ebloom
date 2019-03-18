@@ -1,21 +1,21 @@
 // -------------------------------------------------------------------
-// 
+//
 // Copyright (c) 2010 Basho Technologies, Inc.  All Rights Reserved.
-// 
+//
 // This file is provided to you under the Apache License,
 // Version 2.0 (the "License"); you may not use this file
 // except in compliance with the License.  You may obtain
 // a copy of the License at
-// 
+//
 //    http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing,
 // software distributed under the License is distributed on an
 // "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 // KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations
 // under the License.
-// 
+//
 // -------------------------------------------------------------------
 
 #include "ebloom_nifs.h"
@@ -50,7 +50,7 @@ extern "C"
 
     void ebloom_filter_dtor(ErlNifEnv* env, void* arg);
 
-    int on_load(ErlNifEnv* env, void** priv_data, ERL_NIF_TERM load_info);
+    static int on_load(ErlNifEnv* env, void** priv_data, ERL_NIF_TERM load_info);
 
     static ErlNifFunc nif_funcs[] =
     {
@@ -278,7 +278,7 @@ void ebloom_filter_dtor(ErlNifEnv* env, void* arg)
     delete handle->filter;
 }
 
-int on_load(ErlNifEnv* env, void** priv_data, ERL_NIF_TERM load_info)
+static int on_load(ErlNifEnv* env, void** priv_data, ERL_NIF_TERM load_info)
 {
     ErlNifResourceFlags flags = (ErlNifResourceFlags)(ERL_NIF_RT_CREATE | ERL_NIF_RT_TAKEOVER);
     BLOOM_FILTER_RESOURCE = enif_open_resource_type_compat(env, "bloom_filter_resource",
