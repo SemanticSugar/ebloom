@@ -33,19 +33,11 @@
 
 -endif.
 
+-opaque t() :: reference().
+
+-export_type([t/0]).
+
 -spec init() -> ok | {error, any()}.
--spec new(integer(), float(), integer()) -> {ok, reference()}.
--spec insert(reference(), binary()) -> ok.
--spec contains(reference(), binary()) -> true | false.
--spec clear(reference()) -> ok.
--spec size(reference()) -> integer().
--spec elements(reference()) -> integer().
--spec effective_fpp(reference()) -> float().
--spec intersect(reference(), reference()) -> ok.
--spec union(reference(), reference()) -> ok.
--spec difference(reference(), reference()) -> ok.
--spec serialize(reference()) -> binary().
--spec deserialize(binary()) -> {ok, reference()}.
 init() ->
     SoName =
         case code:priv_dir(ebloom) of
@@ -61,39 +53,51 @@ init() ->
         end,
     erlang:load_nif(SoName, 0).
 
+-spec new(integer(), float(), integer()) -> {ok, t()}.
 new(_Count, _FalseProb, _Seed) ->
     erlang:nif_error({error, not_loaded}).
 
+-spec insert(t(), binary()) -> ok.
 insert(_Ref, _Bin) ->
     erlang:nif_error({error, not_loaded}).
 
+-spec contains(t(), binary()) -> true | false.
 contains(_Ref, _Bin) ->
     erlang:nif_error({error, not_loaded}).
 
+-spec clear(t()) -> ok.
 clear(_Ref) ->
     erlang:nif_error({error, not_loaded}).
 
+-spec size(t()) -> integer().
 size(_Ref) ->
     erlang:nif_error({error, not_loaded}).
 
+-spec elements(t()) -> integer().
 elements(_Ref) ->
     erlang:nif_error({error, not_loaded}).
 
+-spec effective_fpp(t()) -> float().
 effective_fpp(_Ref) ->
     erlang:nif_error({error, not_loaded}).
 
+-spec intersect(t(), t()) -> ok.
 intersect(_Ref, _OtherRef) ->
     erlang:nif_error({error, not_loaded}).
 
+-spec union(t(), t()) -> ok.
 union(_Ref, _OtherRef) ->
     erlang:nif_error({error, not_loaded}).
 
+-spec difference(t(), t()) -> ok.
 difference(_Ref, _OtherRef) ->
     erlang:nif_error({error, not_loaded}).
 
+-spec serialize(t()) -> binary().
 serialize(_Ref) ->
     erlang:nif_error({error, not_loaded}).
 
+-spec deserialize(binary()) -> {ok, t()}.
 deserialize(_Bin) ->
     erlang:nif_error({error, not_loaded}).
 
