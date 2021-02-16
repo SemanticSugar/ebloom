@@ -19,24 +19,18 @@
 %% -------------------------------------------------------------------
 
 -module(ebloom).
--author('Dave Smith <dizzyd@dizzyd.com>').
--export([new/3,
-         insert/2,
-         contains/2,
-         clear/1,
-         size/1,
-         elements/1,
-         effective_fpp/1,
-         intersect/2,
-         union/2,
-         difference/2,
-         serialize/1,
-         deserialize/1]).
 
--on_load(init/0).
+-author('Dave Smith <dizzyd@dizzyd.com>').
+
+-export([new/3, insert/2, contains/2, clear/1, size/1, elements/1, effective_fpp/1,
+         intersect/2, union/2, difference/2, serialize/1, deserialize/1]).
+
+-on_load init/0.
 
 -ifdef(TEST).
+
 -include_lib("eunit/include/eunit.hrl").
+
 -endif.
 
 -spec init() -> ok | {error, any()}.
@@ -52,19 +46,19 @@
 -spec difference(reference(), reference()) -> ok.
 -spec serialize(reference()) -> binary().
 -spec deserialize(binary()) -> {ok, reference()}.
-
 init() ->
-    SoName = case code:priv_dir(ebloom) of
-        {error, bad_name} ->
-            case code:which(?MODULE) of
-                Filename when is_list(Filename) ->
-                    filename:join([filename:dirname(Filename),"../priv", "ebloom_nifs"]);
-                _ ->
-                    filename:join("../priv", "ebloom_nifs")
-            end;
-        Dir ->
-            filename:join(Dir, "ebloom_nifs")
-    end,
+    SoName =
+        case code:priv_dir(ebloom) of
+            {error, bad_name} ->
+                case code:which(?MODULE) of
+                    Filename when is_list(Filename) ->
+                        filename:join([filename:dirname(Filename), "../priv", "ebloom_nifs"]);
+                    _ ->
+                        filename:join("../priv", "ebloom_nifs")
+                end;
+            Dir ->
+                filename:join(Dir, "ebloom_nifs")
+        end,
     erlang:load_nif(SoName, 0).
 
 new(_Count, _FalseProb, _Seed) ->
@@ -128,7 +122,7 @@ serialize_test() ->
     {ok, Ref2} = new(5, 0.01, 123),
     Bin = serialize(Ref),
     Bin2 = serialize(Ref2),
-    true = (Bin =:= Bin2),
+    true = Bin =:= Bin2,
     insert(Ref, <<"abcdef">>),
     Bin3 = serialize(Ref),
     {ok, Ref3} = deserialize(Bin3),
