@@ -4,7 +4,7 @@
   "branch_configuration": "only-build-pull-requests",
   "provider": {
     "id": "github",
-    "webhook_url": "https://webhook.buildkite.com/deliver/c88aaa1c29a701a19b553d09d8b949e93e3030d79a4800256d",
+    "webhook_url": "https://webhook.buildkite.com/deliver/699804aba7bbef18fea3a0d78b72ec5fecd7ba3a9de65133a8",
     "settings": {
       "publish_commit_status": true,
       "build_pull_requests": true,

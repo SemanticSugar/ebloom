@@ -4,7 +4,7 @@
   "branch_configuration": "master",
   "provider": {
     "id": "github",
-    "webhook_url": "https://webhook.buildkite.com/deliver/98f768bb10287aa5e7b1c708d6bc637fd1b92de810d9706612",
+    "webhook_url": "https://webhook.buildkite.com/deliver/3749edcd03b17b708b72744b4df7e0c61ecc73b07df923a3a1",
     "settings": {
       "publish_commit_status": true,
       "build_pull_requests": true,
