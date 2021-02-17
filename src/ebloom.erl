@@ -70,19 +70,19 @@ contains(_Ref, _Bin) ->
 clear(_Ref) ->
     erlang:nif_error({error, not_loaded}).
 
--spec compatible(reference(), reference()) -> true | false.
+-spec compatible(t(), t()) -> boolean().
 compatible(_Ref1, _Ref2) ->
     erlang:nif_error({error, not_loaded}).
 
--spec predicted_elements(reference()) -> integer().
+-spec predicted_elements(t()) -> integer().
 predicted_elements(_Ref) ->
     erlang:nif_error({error, not_loaded}).
 
--spec desired_fpp(reference()) -> float().
+-spec desired_fpp(t()) -> float().
 desired_fpp(_Ref) ->
     erlang:nif_error({error, not_loaded}).
 
--spec random_seed(reference()) -> integer().
+-spec random_seed(t()) -> integer().
 random_seed(_Ref) ->
     erlang:nif_error({error, not_loaded}).
 
