@@ -20,8 +20,6 @@
 
 -module(ebloom).
 
--author('Dave Smith <dizzyd@dizzyd.com>').
-
 -export([new/3, insert/2, contains/2, clear/1, compatible/2, predicted_elements/1,
          desired_fpp/1, random_seed/1, size/1, elements/1, effective_fpp/1, intersect/2, union/2,
          difference/2, serialize/1, deserialize/1]).
