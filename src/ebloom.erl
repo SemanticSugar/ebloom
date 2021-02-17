@@ -20,10 +20,9 @@
 
 -module(ebloom).
 
--author('Dave Smith <dizzyd@dizzyd.com>').
-
--export([new/3, insert/2, contains/2, clear/1, size/1, elements/1, effective_fpp/1,
-         intersect/2, union/2, difference/2, serialize/1, deserialize/1]).
+-export([new/3, insert/2, contains/2, clear/1, compatible/2, predicted_elements/1,
+         desired_fpp/1, random_seed/1, size/1, elements/1, effective_fpp/1, intersect/2, union/2,
+         difference/2, serialize/1, deserialize/1]).
 
 -on_load init/0.
 
@@ -67,6 +66,22 @@ contains(_Ref, _Bin) ->
 
 -spec clear(t()) -> ok.
 clear(_Ref) ->
+    erlang:nif_error({error, not_loaded}).
+
+-spec compatible(t(), t()) -> boolean().
+compatible(_Ref1, _Ref2) ->
+    erlang:nif_error({error, not_loaded}).
+
+-spec predicted_elements(t()) -> integer().
+predicted_elements(_Ref) ->
+    erlang:nif_error({error, not_loaded}).
+
+-spec desired_fpp(t()) -> float().
+desired_fpp(_Ref) ->
+    erlang:nif_error({error, not_loaded}).
+
+-spec random_seed(t()) -> integer().
+random_seed(_Ref) ->
     erlang:nif_error({error, not_loaded}).
 
 -spec size(t()) -> integer().
@@ -143,5 +158,22 @@ clear_test() ->
     clear(Ref),
     0 = elements(Ref),
     false = contains(Ref, <<"1">>).
+
+compatibility_test() ->
+    {ok, Ref1} = new(5, 0.01, 123),
+    {ok, Ref2} = new(5, 0.01, 123),
+    {ok, Ref3} = new(6, 0.01, 123),
+    {ok, Ref4} = new(5, 0.02, 123),
+    {ok, Ref5} = new(5, 0.01, 124),
+    true = compatible(Ref1, Ref2),
+    false = compatible(Ref1, Ref3),
+    false = compatible(Ref1, Ref4),
+    false = compatible(Ref1, Ref5).
+
+parameter_test() ->
+    {ok, Ref1} = new(5, 0.01, 123),
+    5 = predicted_elements(Ref1),
+    0.01 = desired_fpp(Ref1),
+    123 = random_seed(Ref1).
 
 -endif.
