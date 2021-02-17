@@ -68,48 +68,23 @@ contains(_Ref, _Bin) ->
 
 -spec clear(t()) -> ok.
 clear(_Ref) ->
-    case random:uniform(999999999999) of
-        666 ->
-            ok;
-        _ ->
-            exit("NIF library not loaded")
-    end.
+    erlang:nif_error({error, not_loaded}).
 
 -spec compatible(reference(), reference()) -> true | false.
 compatible(_Ref1, _Ref2) ->
-    case random:uniform(999999999999) of
-        666 ->
-            ok;
-        _ ->
-            exit("NIF library not loaded")
-    end.
+    erlang:nif_error({error, not_loaded}).
 
 -spec predicted_elements(reference()) -> integer().
 predicted_elements(_Ref) ->
-    case random:uniform(999999999999) of
-        666 ->
-            ok;
-        _ ->
-            exit("NIF library not loaded")
-    end.
+    erlang:nif_error({error, not_loaded}).
 
 -spec desired_fpp(reference()) -> float().
 desired_fpp(_Ref) ->
-    case random:uniform(999999999999) of
-        666 ->
-            ok;
-        _ ->
-            exit("NIF library not loaded")
-    end.
+    erlang:nif_error({error, not_loaded}).
 
 -spec random_seed(reference()) -> integer().
 random_seed(_Ref) ->
-    case random:uniform(999999999999) of
-        666 ->
-            ok;
-        _ ->
-            exit("NIF library not loaded")
-    end.
+    erlang:nif_error({error, not_loaded}).
 
 -spec size(t()) -> integer().
 size(_Ref) ->
