@@ -1,3 +1,4 @@
+c_src/ebloom_nifs.d
 .eunit/*
 priv/*
 *.o
