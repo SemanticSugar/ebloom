@@ -1,7 +1,7 @@
 {
   "repository": "git@github.com:SemanticSugar/ebloom",
-  "default_branch": "master",
-  "branch_configuration": "master",
+  "default_branch": "main",
+  "branch_configuration": "main",
   "provider": {
     "id": "github",
     "webhook_url": "https://webhook.buildkite.com/deliver/3749edcd03b17b708b72744b4df7e0c61ecc73b07df923a3a1",
