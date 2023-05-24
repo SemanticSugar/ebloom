@@ -176,4 +176,16 @@ parameter_test() ->
     0.01 = desired_fpp(Ref1),
     123 = random_seed(Ref1).
 
+union_increments_elements_counter_test() ->
+    {ok, Ref1} = new(5, 0.01, 123),
+    {ok, Ref2} = new(5, 0.01, 123),
+    0 = elements(Ref1),
+    insert(Ref1, <<"1">>),
+    1 = elements(Ref1),
+    insert(Ref2, <<"2">>),
+    insert(Ref2, <<"3">>),
+    2 = elements(Ref2),
+    union(Ref1, Ref2),
+    3 = elements(Ref1).
+
 -endif.

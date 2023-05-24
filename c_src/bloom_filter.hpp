@@ -268,6 +268,7 @@ public:
          {
             bit_table_[i] |= filter.bit_table_[i];
          }
+         inserted_element_count_ += filter.inserted_element_count_;
       }
       return *this;
    }
