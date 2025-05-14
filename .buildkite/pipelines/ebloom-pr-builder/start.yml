@@ -1,15 +1,12 @@
 - label: 'Test Build'
   command:
-    - git config --global --add safe.directory /app
     - if [ ! -z "$MERGE_BRANCH" ]; then git merge $MERGE_BRANCH -m "merging $MERGE_BRANCH"; fi
-    - curl https://rebar3.s3.amazonaws.com/rebar3 -o ./rebar3
-    - chmod +x rebar3
-    - ./rebar3 test
+    - rebar3 test
   agents:
     queue: 'rtb-new'
   plugins:
-      - docker#v3.8.0:
-          image: "771945457201.dkr.ecr.us-west-2.amazonaws.com/rtb/erts:27.3.4"
+      - docker#v5.11.0:
+          image: "771945457201.dkr.ecr.us-west-2.amazonaws.com/rtb/erts:multiarch-27.3.4-amz2023"
           always-pull: true
           propagate-environment: true
           propagate-aws-auth-tokens: true
