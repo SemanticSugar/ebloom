@@ -8,6 +8,7 @@
       - docker#v5.11.0:
           image: "771945457201.dkr.ecr.us-west-2.amazonaws.com/rtb/erts:multiarch-27.3.4-amz2023"
           always-pull: true
+          user: 2000:2000
           propagate-environment: true
           propagate-aws-auth-tokens: true
           mount-ssh-agent: true
