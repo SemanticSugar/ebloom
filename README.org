@@ -10,13 +10,19 @@
 #+BEGIN_SRC shell
 git clone git://github.com/basho/ebloom.git
 cd ebloom
-make
+rebar3 compile
+#+END_SRC
+
+   Run the enuit tests.
+
+#+BEGIN_SRC shell
+rebar3 eunit
 #+END_SRC
 
    Start up an Erlang shell with the path to =ebloom= included.
 
 #+BEGIN_SRC shell
-erl -pa path/to/ebloom/ebin
+erl -pa _build/default/lib/ebloom/ebin
 #+END_SRC
 
    Create a new bloom filter, insert elements, and test for an
